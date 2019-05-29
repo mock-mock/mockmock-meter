@@ -1,1 +1,1 @@
-web: backend/web
+web: bin/mockmock-meter
