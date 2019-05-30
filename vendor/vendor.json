@@ -19,14 +19,16 @@
 			"path": "github.com/labstack/echo",
 			"revision": "38772c686c76b501f94bd6cd5b77f5842e93b559",
 			"revisionTime": "2019-01-28T14:12:53Z",
-			"version": "v3.3.10",
+			"version": "v3.3.10/middleware",
 			"versionExact": "v3.3.10"
 		},
 		{
-			"checksumSHA1": "Y8jVBYonQCm2QXsiSWg9Kzc04uo=",
+			"checksumSHA1": "Rp/k+BJKpaeB9vyjEPFBW4LeFP8=",
 			"path": "github.com/labstack/echo/middleware",
-			"revision": "fbb72869b3b3a96631dd8c98d755efa7bc63c362",
-			"revisionTime": "2019-05-24T05:13:57Z"
+			"revision": "38772c686c76b501f94bd6cd5b77f5842e93b559",
+			"revisionTime": "2019-01-28T14:12:53Z",
+			"version": "v3.3.10",
+			"versionExact": "v3.3.10"
 		},
 		{
 			"checksumSHA1": "pfEL7LCj3pOF6ko/iLRXRDvrSnU=",
