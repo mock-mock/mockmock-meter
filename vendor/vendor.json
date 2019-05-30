@@ -3,7 +3,8 @@
 	"heroku": {
 		"install": [
 			"./..."
-		]
+		],
+		"goVersion": "go1.11"
 	},
 	"ignore": "test",
 	"package": [
