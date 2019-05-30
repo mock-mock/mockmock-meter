@@ -5,6 +5,7 @@
 package main
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/labstack/echo"
@@ -25,6 +26,10 @@ func main() {
 	//e.Static("/", "/app/frontend")
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
 	e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
+
+	e.GET("/dashboard", func(c echo.Context) error {
+		return c.Redirect(http.StatusMovedPermanently, "https://mockmock-meter-proto.herokuapp.com")
+	})
 
 	// サーバー起動
 	//e.Start(":8080")
