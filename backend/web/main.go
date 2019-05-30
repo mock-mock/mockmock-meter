@@ -22,7 +22,9 @@ func main() {
 	// ルーティング
 	//e.Static("/", "../../frontend/mockmockproto/dist")
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
-	e.Static("/", "/app/frontend")
+	//e.Static("/", "/app/frontend")
+	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
+	e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
 
 	// サーバー起動
 	//e.Start(":8080")
