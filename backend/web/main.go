@@ -20,8 +20,10 @@ func main() {
 	// ルーティング
 	//e.Static("/", "../../frontend/mockmockproto/dist")
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
-	e.File("/", "./../frontend/index.html")
+	e.File("/", "../../frontend/index.html")
 
 	// サーバー起動
 	//e.Start(":8080")
+	//e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+	e.Logger.Fatal(e.Start(":8080"))
 }
