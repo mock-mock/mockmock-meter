@@ -1,1 +1,1 @@
-web: bin/mockmock-meter
+web: bin/web
