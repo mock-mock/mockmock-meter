@@ -1,10 +1,10 @@
 {
 	"comment": "",
 	"heroku": {
+		"goVersion": "go1.11",
 		"install": [
 			"./..."
-		],
-		"goVersion": "go1.11"
+		]
 	},
 	"ignore": "test",
 	"package": [
@@ -15,20 +15,18 @@
 			"revisionTime": "2019-05-28T21:08:42Z"
 		},
 		{
-			"checksumSHA1": "aw60jWFidzTWESLRrQs8ZYpcK84=",
+			"checksumSHA1": "ynPXfBgVKquHSKkdFWk3oqSYf+g=",
 			"path": "github.com/labstack/echo",
-			"revision": "fbb72869b3b3a96631dd8c98d755efa7bc63c362",
-			"revisionTime": "2019-05-24T05:13:57Z"
+			"revision": "38772c686c76b501f94bd6cd5b77f5842e93b559",
+			"revisionTime": "2019-01-28T14:12:53Z",
+			"version": "v3.3.10",
+			"versionExact": "v3.3.10"
 		},
 		{
 			"checksumSHA1": "Y8jVBYonQCm2QXsiSWg9Kzc04uo=",
 			"path": "github.com/labstack/echo/middleware",
 			"revision": "fbb72869b3b3a96631dd8c98d755efa7bc63c362",
 			"revisionTime": "2019-05-24T05:13:57Z"
-		},
-		{
-			"path": "github.com/labstack/echo/v4",
-			"revision": "fbb72869b3b3a96631dd8c98d755efa7bc63c362"
 		},
 		{
 			"checksumSHA1": "pfEL7LCj3pOF6ko/iLRXRDvrSnU=",
