@@ -1,0 +1,24 @@
+{
+  "addons": [
+    "papertrail"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/go"
+    }
+  ],
+  "env": {
+    "PAPERTRAIL_API_TOKEN": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "mockmock-meter",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
