@@ -6,15 +6,17 @@
   * `swagger serve swagger.yaml`
 
 
-## Required Configurations
+## Configurations
 
-coming soon...
-
+```sh
+# Optional(port)
+export PORT=8000
+```
 ## Getting started
 
 ```sh
-# run server with following command
-go run gen/cmd/mock-mock-server/main.go
+# default port is randomly assigned, if not specified
+go run gen/cmd/mock-mock-server/main.go --port ${port}
 
 # health check returns json: {"messsage":"OK"}
 curl <endpoint url>/v1
@@ -82,8 +84,22 @@ coming soon...
 
 ### Build
 
-coming soon...
+for Binary
+ 
+```sh
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags '-s -w' -a -installsuffix cgo -o ./bin/main ./gen/cmd/mock-mock-server/main.go
+```
 
-### Build & Deploy to GCP CloudRun
+for Docker
+```sh
+# Build
+docker build -t mockmock-meter .
+
+# Run
+docker run --name mockmock -d -p 8000:8000 -t mockmock-meter
+# docker run -e "PORT=3000" -p 8000:8000 -t mockmock-meter
+```
+
+### Build & Deploy to Heroku
 
 coming soon...
