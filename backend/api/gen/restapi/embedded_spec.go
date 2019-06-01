@@ -31,7 +31,7 @@ func init() {
     "version": "0.0.1"
   },
   "host": "mock-mock.swagger.io",
-  "basePath": "/v2",
+  "basePath": "/v1",
   "paths": {
     "/": {
       "get": {
@@ -178,7 +178,7 @@ func init() {
     "version": "0.0.1"
   },
   "host": "mock-mock.swagger.io",
-  "basePath": "/v2",
+  "basePath": "/v1",
   "paths": {
     "/": {
       "get": {

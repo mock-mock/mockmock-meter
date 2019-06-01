@@ -12,8 +12,13 @@ coming soon...
 
 ## Getting started
 
-coming soon...
+```ssh
+# run server with following command
+go run gen/cmd/mock-mock-server/main.go
 
+# health check returns json: {"messsage":"OK"}
+curl <endpoint url>/v1
+```
 ## For developer
 
 ## Reference

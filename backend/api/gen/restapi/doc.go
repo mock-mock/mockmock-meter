@@ -8,7 +8,7 @@ This is a mock-mock server. Manage mock-mocks for motivated people.
     Schemes:
       http
     Host: mock-mock.swagger.io
-    BasePath: /v2
+    BasePath: /v1
     Version: 0.0.1
 
     Consumes:

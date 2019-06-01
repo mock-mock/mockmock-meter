@@ -4,7 +4,7 @@ info:
   version: 0.0.1
   title: mock-mock
 host: mock-mock.swagger.io
-basePath: /v2
+basePath: /v1
 tags:
   - name: mock-mock
     description: manage mock-mocks. start, end, and performances.

@@ -10,6 +10,7 @@ import (
 	runtime "github.com/go-openapi/runtime"
 	middleware "github.com/go-openapi/runtime/middleware"
 
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/models"
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations"
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health"
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock"
@@ -35,19 +36,22 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 
 	api.JSONProducer = runtime.JSONProducer()
 
+	/*
+		Health
+	*/
+	api.HealthHelloHandler = health.HelloHandlerFunc(func(params health.HelloParams) middleware.Responder {
+		return health.NewHelloOK().WithPayload(&models.Health{Message: "OK"})
+	})
+	api.HealthHealthcheckHandler = health.HealthcheckHandlerFunc(func(params health.HealthcheckParams) middleware.Responder {
+		return health.NewHealthcheckOK().WithPayload(&models.Health{Message: "OK"})
+	})
+
+	/*
+		Mock
+	*/
 	if api.MockPostMockHandler == nil {
 		api.MockPostMockHandler = mock.PostMockHandlerFunc(func(params mock.PostMockParams) middleware.Responder {
 			return middleware.NotImplemented("operation mock.PostMock has not yet been implemented")
-		})
-	}
-	if api.HealthHealthcheckHandler == nil {
-		api.HealthHealthcheckHandler = health.HealthcheckHandlerFunc(func(params health.HealthcheckParams) middleware.Responder {
-			return middleware.NotImplemented("operation health.Healthcheck has not yet been implemented")
-		})
-	}
-	if api.HealthHelloHandler == nil {
-		api.HealthHelloHandler = health.HelloHandlerFunc(func(params health.HelloParams) middleware.Responder {
-			return middleware.NotImplemented("operation health.Hello has not yet been implemented")
 		})
 	}
 
