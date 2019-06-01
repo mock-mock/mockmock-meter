@@ -1,0 +1,9 @@
+# Goland
+.idea
+
+# Protect credentials file!!
+*.json
+
+# Exclude Test
+
+# Exclude Document
