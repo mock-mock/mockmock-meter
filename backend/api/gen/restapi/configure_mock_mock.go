@@ -49,11 +49,9 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 	/*
 		Mock
 	*/
-	if api.MockPostMockHandler == nil {
-		api.MockPostMockHandler = mock.PostMockHandlerFunc(func(params mock.PostMockParams) middleware.Responder {
-			return middleware.NotImplemented("operation mock.PostMock has not yet been implemented")
-		})
-	}
+	api.MockPostMockHandler = mock.PostMockHandlerFunc(func(params mock.PostMockParams) middleware.Responder {
+		return middleware.NotImplemented("operation mock.PostMock has not yet been implemented")
+	})
 
 	api.ServerShutdown = func() {}
 
