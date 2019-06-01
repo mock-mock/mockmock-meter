@@ -12,7 +12,7 @@ coming soon...
 
 ## Getting started
 
-```ssh
+```sh
 # run server with following command
 go run gen/cmd/mock-mock-server/main.go
 
