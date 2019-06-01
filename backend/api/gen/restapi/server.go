@@ -25,7 +25,7 @@ import (
 	flags "github.com/jessevdk/go-flags"
 	"golang.org/x/net/netutil"
 
-	"github.com/mock-mock/mockmock-meter/backend/api/restapi/operations"
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations"
 )
 
 const (

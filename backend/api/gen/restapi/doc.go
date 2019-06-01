@@ -4,18 +4,12 @@
 Package restapi mock-mock
 This is a mock-mock server. Manage mock-mocks for motivated people.
 
-Terms Of Service:
-
-TBD
-
 
     Schemes:
       http
     Host: mock-mock.swagger.io
     BasePath: /v2
     Version: 0.0.1
-    License: TBD http://TBD.html
-    Contact: <TBD@gmaiil.com>
 
     Consumes:
     - application/json

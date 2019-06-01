@@ -19,7 +19,8 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/mock-mock/mockmock-meter/backend/api/restapi/operations/mock_mock"
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health"
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock"
 )
 
 // NewMockMockAPI creates a new MockMock instance
@@ -39,8 +40,14 @@ func NewMockMockAPI(spec *loads.Document) *MockMockAPI {
 		BearerAuthenticator: security.BearerAuth,
 		JSONConsumer:        runtime.JSONConsumer(),
 		JSONProducer:        runtime.JSONProducer(),
-		MockMockPostMockHandler: mock_mock.PostMockHandlerFunc(func(params mock_mock.PostMockParams) middleware.Responder {
-			return middleware.NotImplemented("operation MockMockPostMock has not yet been implemented")
+		MockPostMockHandler: mock.PostMockHandlerFunc(func(params mock.PostMockParams) middleware.Responder {
+			return middleware.NotImplemented("operation MockPostMock has not yet been implemented")
+		}),
+		HealthHealthcheckHandler: health.HealthcheckHandlerFunc(func(params health.HealthcheckParams) middleware.Responder {
+			return middleware.NotImplemented("operation HealthHealthcheck has not yet been implemented")
+		}),
+		HealthHelloHandler: health.HelloHandlerFunc(func(params health.HelloParams) middleware.Responder {
+			return middleware.NotImplemented("operation HealthHello has not yet been implemented")
 		}),
 	}
 }
@@ -73,8 +80,12 @@ type MockMockAPI struct {
 	// JSONProducer registers a producer for a "application/json" mime type
 	JSONProducer runtime.Producer
 
-	// MockMockPostMockHandler sets the operation handler for the post mock operation
-	MockMockPostMockHandler mock_mock.PostMockHandler
+	// MockPostMockHandler sets the operation handler for the post mock operation
+	MockPostMockHandler mock.PostMockHandler
+	// HealthHealthcheckHandler sets the operation handler for the healthcheck operation
+	HealthHealthcheckHandler health.HealthcheckHandler
+	// HealthHelloHandler sets the operation handler for the hello operation
+	HealthHelloHandler health.HelloHandler
 
 	// ServeError is called when an error is received, there is a default handler
 	// but you can set your own with this
@@ -138,8 +149,16 @@ func (o *MockMockAPI) Validate() error {
 		unregistered = append(unregistered, "JSONProducer")
 	}
 
-	if o.MockMockPostMockHandler == nil {
-		unregistered = append(unregistered, "mock_mock.PostMockHandler")
+	if o.MockPostMockHandler == nil {
+		unregistered = append(unregistered, "mock.PostMockHandler")
+	}
+
+	if o.HealthHealthcheckHandler == nil {
+		unregistered = append(unregistered, "health.HealthcheckHandler")
+	}
+
+	if o.HealthHelloHandler == nil {
+		unregistered = append(unregistered, "health.HelloHandler")
 	}
 
 	if len(unregistered) > 0 {
@@ -243,7 +262,17 @@ func (o *MockMockAPI) initHandlerCache() {
 	if o.handlers["POST"] == nil {
 		o.handlers["POST"] = make(map[string]http.Handler)
 	}
-	o.handlers["POST"]["/mock"] = mock_mock.NewPostMock(o.context, o.MockMockPostMockHandler)
+	o.handlers["POST"]["/mock"] = mock.NewPostMock(o.context, o.MockPostMockHandler)
+
+	if o.handlers["GET"] == nil {
+		o.handlers["GET"] = make(map[string]http.Handler)
+	}
+	o.handlers["GET"]["/health"] = health.NewHealthcheck(o.context, o.HealthHealthcheckHandler)
+
+	if o.handlers["GET"] == nil {
+		o.handlers["GET"] = make(map[string]http.Handler)
+	}
+	o.handlers["GET"][""] = health.NewHello(o.context, o.HealthHelloHandler)
 
 }
 

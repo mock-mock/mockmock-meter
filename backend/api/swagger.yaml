@@ -1,75 +1,96 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "This is a mock-mock server. Manage mock-mocks for motivated people."
-  version: "0.0.1"
-  title: "mock-mock"
-  termsOfService: "TBD"
-  contact:
-    email: "TBD@gmaiil.com"
-  license:
-    name: "TBD"
-    url: "http://TBD.html"
-host: "mock-mock.swagger.io"
-basePath: "/v2"
+  description: This is a mock-mock server. Manage mock-mocks for motivated people.
+  version: 0.0.1
+  title: mock-mock
+host: mock-mock.swagger.io
+basePath: /v2
 tags:
-- name: "mock-mock"
-  description: "manage mock-mocks. start, end, and performances."
+  - name: mock-mock
+    description: manage mock-mocks. start, end, and performances.
 schemes:
-# - "https"
-- "http"
+  # - https
+  - http
+consumes:
+  - application/json
 paths:
+  /:
+    get:
+      tags:
+        - health
+      summary: health check
+      description: some
+      operationId: hello
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Health'
+  /health:
+    get:
+      tags:
+        - health
+      summary: health check
+      description: some
+      operationId: healthcheck
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Health'
   /mock:
     post:
       tags:
-      - "mock-mock"
-      summary: "Request any mock-mock action"
-      description: ""
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
+        - mock
+      summary: Request any mock-mock action
+      description: some
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Slack information object, requested from slash command."
-        required: true
-        schema:
-          $ref: "#/definitions/SlackRequest"
+        - in: body
+          name: body
+          description: Slack information object, requested from slash command.
+          required: true
+          schema:
+            $ref: '#/definitions/SlackRequest'
       responses:
         200:
-          description: "OK"
+          description: OK
           schema:
-            $ref: "#/definitions/SlackResponse"
+            $ref: '#/definitions/SlackResponse'
         405:
-          description: "Invalid input"
+          description: Invalid input
 definitions:
   SlackRequest:
-    type: "object"
+    type: object
     properties:
       token:
-        type: "string"
+        type: string
       team_id:
-        type: "string"
+        type: string
       team_domain:
-        type: "string"
+        type: string
       channel_id:
-        type: "string"
+        type: string
       channel_name:
-        type: "string"
+        type: string
       user_id:
-        type: "string"
+        type: string
       user_name:
-        type: "string"
+        type: string
       command:
-        type: "string"
+        type: string
       text:
-        type: "string"
+        type: string
       response_url:
-        type: "string"
+        type: string
       trigger_id:
-        type: "string"
+        type: string
   SlackResponse:
-    type: "object"
+    type: object
     properties:
       message:
-        type: "string"
+        type: string
+  Health:
+    type: object
+    properties:
+      message:
+        type: string # Error Message

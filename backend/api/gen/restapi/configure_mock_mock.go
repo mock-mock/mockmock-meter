@@ -10,11 +10,12 @@ import (
 	runtime "github.com/go-openapi/runtime"
 	middleware "github.com/go-openapi/runtime/middleware"
 
-	"github.com/mock-mock/mockmock-meter/backend/api/restapi/operations"
-	"github.com/mock-mock/mockmock-meter/backend/api/restapi/operations/mock_mock"
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations"
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health"
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock"
 )
 
-//go:generate swagger generate server --target ../../api --name MockMock --spec ../swagger.yaml
+//go:generate swagger generate server --target ../../gen --name MockMock --spec ../../swagger.yaml
 
 func configureFlags(api *operations.MockMockAPI) {
 	// api.CommandLineOptionsGroups = []swag.CommandLineOptionsGroup{ ... }
@@ -34,9 +35,19 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 
 	api.JSONProducer = runtime.JSONProducer()
 
-	if api.MockMockPostMockHandler == nil {
-		api.MockMockPostMockHandler = mock_mock.PostMockHandlerFunc(func(params mock_mock.PostMockParams) middleware.Responder {
-			return middleware.NotImplemented("operation mock_mock.PostMock has not yet been implemented")
+	if api.MockPostMockHandler == nil {
+		api.MockPostMockHandler = mock.PostMockHandlerFunc(func(params mock.PostMockParams) middleware.Responder {
+			return middleware.NotImplemented("operation mock.PostMock has not yet been implemented")
+		})
+	}
+	if api.HealthHealthcheckHandler == nil {
+		api.HealthHealthcheckHandler = health.HealthcheckHandlerFunc(func(params health.HealthcheckParams) middleware.Responder {
+			return middleware.NotImplemented("operation health.Healthcheck has not yet been implemented")
+		})
+	}
+	if api.HealthHelloHandler == nil {
+		api.HealthHelloHandler = health.HelloHandlerFunc(func(params health.HelloParams) middleware.Responder {
+			return middleware.NotImplemented("operation health.Hello has not yet been implemented")
 		})
 	}
 

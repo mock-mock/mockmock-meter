@@ -18,6 +18,9 @@ var (
 
 func init() {
 	SwaggerJSON = json.RawMessage([]byte(`{
+  "consumes": [
+    "application/json"
+  ],
   "schemes": [
     "http"
   ],
@@ -25,29 +28,52 @@ func init() {
   "info": {
     "description": "This is a mock-mock server. Manage mock-mocks for motivated people.",
     "title": "mock-mock",
-    "termsOfService": "TBD",
-    "contact": {
-      "email": "TBD@gmaiil.com"
-    },
-    "license": {
-      "name": "TBD",
-      "url": "http://TBD.html"
-    },
     "version": "0.0.1"
   },
   "host": "mock-mock.swagger.io",
   "basePath": "/v2",
   "paths": {
+    "/": {
+      "get": {
+        "description": "some",
+        "tags": [
+          "health"
+        ],
+        "summary": "health check",
+        "operationId": "hello",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Health"
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "description": "some",
+        "tags": [
+          "health"
+        ],
+        "summary": "health check",
+        "operationId": "healthcheck",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Health"
+            }
+          }
+        }
+      }
+    },
     "/mock": {
       "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "description": "some",
         "tags": [
-          "mock-mock"
+          "mock"
         ],
         "summary": "Request any mock-mock action",
         "parameters": [
@@ -76,6 +102,14 @@ func init() {
     }
   },
   "definitions": {
+    "Health": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
     "SlackRequest": {
       "type": "object",
       "properties": {
@@ -131,6 +165,9 @@ func init() {
   ]
 }`))
 	FlatSwaggerJSON = json.RawMessage([]byte(`{
+  "consumes": [
+    "application/json"
+  ],
   "schemes": [
     "http"
   ],
@@ -138,29 +175,52 @@ func init() {
   "info": {
     "description": "This is a mock-mock server. Manage mock-mocks for motivated people.",
     "title": "mock-mock",
-    "termsOfService": "TBD",
-    "contact": {
-      "email": "TBD@gmaiil.com"
-    },
-    "license": {
-      "name": "TBD",
-      "url": "http://TBD.html"
-    },
     "version": "0.0.1"
   },
   "host": "mock-mock.swagger.io",
   "basePath": "/v2",
   "paths": {
+    "/": {
+      "get": {
+        "description": "some",
+        "tags": [
+          "health"
+        ],
+        "summary": "health check",
+        "operationId": "hello",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Health"
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "description": "some",
+        "tags": [
+          "health"
+        ],
+        "summary": "health check",
+        "operationId": "healthcheck",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Health"
+            }
+          }
+        }
+      }
+    },
     "/mock": {
       "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "description": "some",
         "tags": [
-          "mock-mock"
+          "mock"
         ],
         "summary": "Request any mock-mock action",
         "parameters": [
@@ -189,6 +249,14 @@ func init() {
     }
   },
   "definitions": {
+    "Health": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
     "SlackRequest": {
       "type": "object",
       "properties": {
