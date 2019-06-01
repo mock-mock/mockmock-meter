@@ -96,8 +96,7 @@ for Docker
 docker build -t mockmock-meter .
 
 # Run
-docker run --name mockmock -d -p 8000:8000 -t mockmock-meter
-# docker run -e "PORT=3000" -p 8000:8000 -t mockmock-meter
+docker run --name mockmock -d -e "PORT=8000" -p 8000:8000 -t mockmock-meter
 ```
 
 ### Build & Deploy to Heroku

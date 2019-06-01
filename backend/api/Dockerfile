@@ -9,8 +9,7 @@ RUN GO111MODULE=on GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags '-s -
 FROM alpine:3.9.4
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /main .
-# CMD ["./main", "--port", "8000"]
-# CMD ./main --port $PORT
-CMD ["./main", "--host", "0.0.0.0", "--port", "8000"]
 
-EXPOSE 8000
+CMD ./main --host 0.0.0.0 --port $PORT
+
+EXPOSE $PORT
