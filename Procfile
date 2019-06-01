@@ -1,2 +1,2 @@
 web: bin/web
-web: bin/api
+web: bin/mock-mock-server
