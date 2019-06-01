@@ -15,7 +15,7 @@ tags:
 - name: "mock-mock"
   description: "manage mock-mocks. start, end, and performances."
 schemes:
-- "https"
+# - "https"
 - "http"
 paths:
   /mock:
