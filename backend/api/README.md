@@ -10,6 +10,7 @@
 
 ```sh
 # Optional(port)
+# port is defined by either environment variable or argument
 export PORT=8000
 ```
 ## Getting started
@@ -99,6 +100,22 @@ docker build -t mockmock-meter .
 docker run --name mockmock -d -e "PORT=8000" -p 8000:8000 -t mockmock-meter
 ```
 
-### Build & Deploy to Heroku
+### Deploy to Heroku
 
-coming soon...
+```sh
+# init heroku CLI
+heroku login
+heroku container:login
+
+# add heroku repository to remote repository
+heroku git:remote -a <heroku app name>
+
+# push container image
+heroku container:push web
+
+# release app
+heroku container:release web
+
+# check running app
+heroku open
+```
