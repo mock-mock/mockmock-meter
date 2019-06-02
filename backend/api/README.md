@@ -90,7 +90,6 @@ coming soon...
 ### Build & Run
 
 for Binary
- 
 ```sh
 # Build binary
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags '-s -w' -a -installsuffix cgo -o ./bin/main ./gen/cmd/mock-mock-server/main.go
@@ -104,13 +103,17 @@ for Docker
 # Build
 docker build -t mockmock-server .
 
-# Run only server
+# Run server
 docker run --name mockmock -d -e "PORT=8000" -p 8000:8000 -t mockmock-server
+```
 
+for Docker Compose
+```sh
 # Run server and all required infrastructures
 # includes all build process if necessary
 docker-coompose up -d
 ```
+
 
 ### Deploy to Heroku
 
