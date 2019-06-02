@@ -16,8 +16,12 @@ export PORT=8000
 ## Getting started
 
 ```sh
-# default port is randomly assigned, if not specified
+# Run with specified port
 go run gen/cmd/mock-mock-server/main.go --port ${port}
+
+# port is randomly assigned, if not specified
+# except the case environment value - PORT is set
+go run gen/cmd/mock-mock-server/main.go
 
 # health check returns json: {"messsage":"OK"}
 curl <endpoint url>/v1
@@ -83,21 +87,29 @@ coming soon...
 | xxx  | xxx  | xxxxxx          |
 
 
-### Build
+### Build & Run
 
 for Binary
  
 ```sh
+# Build binary
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags '-s -w' -a -installsuffix cgo -o ./bin/main ./gen/cmd/mock-mock-server/main.go
+
+# Run with specified port
+./bin/main --port ${port}
 ```
 
 for Docker
 ```sh
 # Build
-docker build -t mockmock-meter .
+docker build -t mockmock-server .
 
-# Run
-docker run --name mockmock -d -e "PORT=8000" -p 8000:8000 -t mockmock-meter
+# Run only server
+docker run --name mockmock -d -e "PORT=8000" -p 8000:8000 -t mockmock-server
+
+# Run server and all required infrastructures
+# includes all build process if necessary
+docker-coompose up -d
 ```
 
 ### Deploy to Heroku
