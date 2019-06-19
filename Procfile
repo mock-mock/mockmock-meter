@@ -1,1 +1,1 @@
-web: bin/mock-mock-server
+web: bin/web
