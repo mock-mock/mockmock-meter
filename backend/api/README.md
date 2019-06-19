@@ -111,6 +111,7 @@ for Docker Compose
 ```sh
 # Run server and all required infrastructures
 # includes all build process if necessary
+# server will be hosted with port=8080
 docker-coompose up -d
 ```
 

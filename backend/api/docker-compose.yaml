@@ -4,7 +4,6 @@ services:
   mockmock-server:
     build:
       context: ./
-      # dockerfile: Dockerfile
       cache_from:
         - mockmock-server:latest
     image: mockmock-server:latest
