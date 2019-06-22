@@ -99,6 +99,24 @@ func init() {
           }
         }
       }
+    },
+    "/web": {
+      "get": {
+        "description": "some",
+        "tags": [
+          "web"
+        ],
+        "summary": "return web resouces",
+        "operationId": "webresource",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Web"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -149,6 +167,14 @@ func init() {
       }
     },
     "SlackResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Web": {
       "type": "object",
       "properties": {
         "message": {
@@ -246,6 +272,24 @@ func init() {
           }
         }
       }
+    },
+    "/web": {
+      "get": {
+        "description": "some",
+        "tags": [
+          "web"
+        ],
+        "summary": "return web resouces",
+        "operationId": "webresource",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Web"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -296,6 +340,14 @@ func init() {
       }
     },
     "SlackResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Web": {
       "type": "object",
       "properties": {
         "message": {

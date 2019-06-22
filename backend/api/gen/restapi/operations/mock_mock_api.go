@@ -21,6 +21,7 @@ import (
 
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health"
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock"
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/web"
 )
 
 // NewMockMockAPI creates a new MockMock instance
@@ -48,6 +49,9 @@ func NewMockMockAPI(spec *loads.Document) *MockMockAPI {
 		}),
 		HealthHelloHandler: health.HelloHandlerFunc(func(params health.HelloParams) middleware.Responder {
 			return middleware.NotImplemented("operation HealthHello has not yet been implemented")
+		}),
+		WebWebresourceHandler: web.WebresourceHandlerFunc(func(params web.WebresourceParams) middleware.Responder {
+			return middleware.NotImplemented("operation WebWebresource has not yet been implemented")
 		}),
 	}
 }
@@ -86,6 +90,8 @@ type MockMockAPI struct {
 	HealthHealthcheckHandler health.HealthcheckHandler
 	// HealthHelloHandler sets the operation handler for the hello operation
 	HealthHelloHandler health.HelloHandler
+	// WebWebresourceHandler sets the operation handler for the webresource operation
+	WebWebresourceHandler web.WebresourceHandler
 
 	// ServeError is called when an error is received, there is a default handler
 	// but you can set your own with this
@@ -159,6 +165,10 @@ func (o *MockMockAPI) Validate() error {
 
 	if o.HealthHelloHandler == nil {
 		unregistered = append(unregistered, "health.HelloHandler")
+	}
+
+	if o.WebWebresourceHandler == nil {
+		unregistered = append(unregistered, "web.WebresourceHandler")
 	}
 
 	if len(unregistered) > 0 {
@@ -273,6 +283,11 @@ func (o *MockMockAPI) initHandlerCache() {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
 	o.handlers["GET"][""] = health.NewHello(o.context, o.HealthHelloHandler)
+
+	if o.handlers["GET"] == nil {
+		o.handlers["GET"] = make(map[string]http.Handler)
+	}
+	o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
 
 }
 

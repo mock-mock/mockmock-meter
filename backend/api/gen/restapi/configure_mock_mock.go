@@ -14,6 +14,7 @@ import (
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations"
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health"
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock"
+	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/web"
 )
 
 //go:generate swagger generate server --target ../../gen --name MockMock --spec ../../swagger.yaml
@@ -51,6 +52,11 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 	*/
 	api.MockPostMockHandler = mock.PostMockHandlerFunc(func(params mock.PostMockParams) middleware.Responder {
 		return middleware.NotImplemented("operation mock.PostMock has not yet been implemented")
+	})
+
+	// web
+	api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebParams) middleware.Responder {
+		return ealth.NewHelloOK().WithPayload(&models.Health{Message: "OK"})
 	})
 
 	api.ServerShutdown = func() {}

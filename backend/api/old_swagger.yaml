@@ -38,18 +38,6 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Health'
-  /web:
-   get:
-    tags:
-     - web
-    summary: return web resouces
-    description: some
-    operationId: webresource
-    responses:
-      200:
-        description: OK
-        schema:
-          $ref: '#/definitions/Web'
   /mock:
     post:
       tags:
@@ -104,10 +92,5 @@ definitions:
   Health:
     type: object
     properties:
-      message:
-        type: string # Error Message
-  Web:
-   type: object
-   properties:
       message:
         type: string # Error Message
