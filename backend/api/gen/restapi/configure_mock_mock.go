@@ -55,8 +55,8 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 	})
 
 	// web
-	api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebParams) middleware.Responder {
-		return ealth.NewHelloOK().WithPayload(&models.Health{Message: "OK"})
+	api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebresourceParams) middleware.Responder {
+		return web.NewWebresourceOK().WithPayload(&models.Web{Message: "OK"})
 	})
 
 	api.ServerShutdown = func() {}
