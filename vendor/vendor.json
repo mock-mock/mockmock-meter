@@ -1,5 +1,11 @@
 {
 	"comment": "",
+	"heroku": {
+		"goVersion": "go1.12",
+		"install": [
+			"./..."
+		]
+	},
 	"ignore": "test",
 	"package": [
 		{
@@ -173,56 +179,56 @@
 		{
 			"checksumSHA1": "QQN77mr3LQb6f2Qf0i9BdwIOb3M=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/cmd/mock-mock-server",
-			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
-			"revisionTime": "2019-06-22T16:18:10Z",
+			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
+			"revisionTime": "2019-06-22T18:41:32Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "ICN1qQwY4F+a+tYqrML7r4oy3HU=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/models",
-			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
-			"revisionTime": "2019-06-22T16:18:10Z",
+			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
+			"revisionTime": "2019-06-22T18:41:32Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "eLTsqEzCcXNAyZjuPIkcJmfQWRw=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi",
-			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
-			"revisionTime": "2019-06-22T16:18:10Z",
+			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
+			"revisionTime": "2019-06-22T18:41:32Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
-			"checksumSHA1": "SUbMBMeqvO38aMeZ+MkNBKUJ418=",
+			"checksumSHA1": "3tSUOmWgFyRllSPCxfzva7ClvXQ=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations",
-			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
-			"revisionTime": "2019-06-22T16:18:10Z",
+			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
+			"revisionTime": "2019-06-22T18:41:32Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "D5dWj8rYVGxKQNjqrwKjpUVk0ZY=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health",
-			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
-			"revisionTime": "2019-06-22T16:18:10Z",
+			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
+			"revisionTime": "2019-06-22T18:41:32Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "6tL+YSM7WoTtQ0JT0S3AP4JioQM=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock",
-			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
-			"revisionTime": "2019-06-22T16:18:10Z",
+			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
+			"revisionTime": "2019-06-22T18:41:32Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "gpC8uz21aP5+HIpsDiCReKqpb7E=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/web",
-			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
-			"revisionTime": "2019-06-22T16:18:10Z",
+			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
+			"revisionTime": "2019-06-22T18:41:32Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
@@ -311,9 +317,5 @@
 			"revisionTime": "2018-11-15T11:05:04Z"
 		}
 	],
-	"rootPath": "github.com/mock-mock/mockmock-meter",
-	"heroku": {
-        "install" : [ "./..." ],
-        "goVersion": "go1.12"
-         }
+	"rootPath": "github.com/mock-mock/mockmock-meter"
 }
