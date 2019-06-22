@@ -7,8 +7,10 @@ package operations
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	errors "github.com/go-openapi/errors"
@@ -290,6 +292,13 @@ func (o *MockMockAPI) initHandlerCache() {
 	}
 	//o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
 	log.Println(o.context.BasePath())
+	p, _ := os.Getwd()
+	fmt.Println(p)
+
+	files, _ := ioutil.ReadDir("./")
+	for _, f := range files {
+		fmt.Println(f.Name())
+	}
 	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("/mockmock-meter/frontend/vuetify-material-dashboard-master/dist"))
 
 	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../frontend/vuetify-material-dashboard-master/dist"))
