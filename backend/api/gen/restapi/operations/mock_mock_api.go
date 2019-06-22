@@ -7,6 +7,7 @@ package operations
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 
@@ -288,7 +289,12 @@ func (o *MockMockAPI) initHandlerCache() {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
 	//o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
-	o.handlers["GET"]["/web/"] = http.FileServer(http.Dir("/app/frontend/vuetify-material-dashboard-master/dist"))
+	log.Println(o.context.BasePath())
+	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("/mockmock-meter/frontend/vuetify-material-dashboard-master/dist"))
+
+	o.handlers["GET"]["/web1"] = http.FileServer(http.Dir("../../../../../frontend/vuetify-material-dashboard-master/dist"))
+
+	o.handlers["GET"]["/web2"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
 
 }
 
