@@ -294,7 +294,9 @@ func (o *MockMockAPI) initHandlerCache() {
 
 	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../frontend/vuetify-material-dashboard-master/dist"))
 
-	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
+	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
+
+	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("./static"))
 
 }
 
