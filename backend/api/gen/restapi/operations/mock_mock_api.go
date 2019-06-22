@@ -91,7 +91,8 @@ type MockMockAPI struct {
 	// HealthHelloHandler sets the operation handler for the hello operation
 	HealthHelloHandler health.HelloHandler
 	// WebWebresourceHandler sets the operation handler for the webresource operation
-	WebWebresourceHandler web.WebresourceHandler
+	//WebWebresourceHandler web.WebresourceHandler
+	WebWebresourceHandler http.Handler
 
 	// ServeError is called when an error is received, there is a default handler
 	// but you can set your own with this
@@ -287,7 +288,8 @@ func (o *MockMockAPI) initHandlerCache() {
 	if o.handlers["GET"] == nil {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
-	o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
+	//o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
+	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("./frontend/vuetify-material-dashboard-master/dist"))
 
 }
 

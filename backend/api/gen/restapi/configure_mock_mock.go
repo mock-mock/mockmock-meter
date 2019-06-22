@@ -14,7 +14,6 @@ import (
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations"
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health"
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock"
-	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/web"
 )
 
 //go:generate swagger generate server --target ../../gen --name MockMock --spec ../../swagger.yaml
@@ -55,10 +54,41 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 	})
 
 	// web
-	api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebresourceParams) middleware.Responder {
-		//return web.NewWebresourceOK().WithPayload(&models.Web{Message: "OK"})
-		return http.FileServer(http.Dir("/app/frontend/vuetify-material-dashboard-master/dist")) )
-	})
+	// api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebresourceParams) middleware.Responder {
+	// 	//return web.NewWebresourceOK().WithPayload(&models.Web{Message: "OK"})
+	// 	//return http.Handle("/", http.FileServer(http.Dir("/app/frontend/vuetify-material-dashboard-master/dist")))
+	// 	return http.Handle("/", http.FileServer(http.Dir("./frontend/vuetify-material-dashboard-master/dist")))
+	// })
+
+	// api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebresourceParams) middleware.Responder {
+	// 	//return http.Handle("/", http.FileServer(http.Dir("./frontend/vuetify-material-dashboard-master/dist")))
+	// 	//fs := http.Handle("/", http.FileServer(http.Dir("./frontend/vuetify-material-dashboard-master/dist")))
+
+	// 	// f := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	// 	// 	http.Handle("/", http.FileServer(http.Dir("./frontend/vuetify-material-dashboard-master/dist")))
+	// 	// })
+	// 	//return http.FileServer(http.Dir("./frontend/vuetify-material-dashboard-master/dist"))
+	// 	//responder := middleware.Responder.WriteResponse()
+	// 	var writer http.ResponseWriter
+	// 	writer.Header().Set("Content-Type", "text/html")
+	// 	writer.Write(http.Dir("./frontend/vuetify-material-dashboard-master/dist"))
+
+	// 	var producer runtime.Producer
+
+	// 	var responder middleware.Responder
+	// 	responder.WriteResponse(writer, producer)
+
+	// 	//responder := web.NewWebresourceOK().WriteResponse(writer, producer)
+	// 	if web.WebresourceOKCode == 200 {
+	// 		return responder
+	// 	} else {
+	// 		return middleware.NotImplemented("operation web.get error has not yet been implemented")
+	// 	}
+	// })
+
+	//var context *middleware.Context = web.
+	//web.NewWebresource(context, http.FileServer(http.Dir("./frontend/vuetify-material-dashboard-master/dist")))
+	//api.WebWebresourceHandler = http.FileServer(http.Dir("./frontend/vuetify-material-dashboard-master/dist"))
 
 	api.ServerShutdown = func() {}
 
