@@ -312,7 +312,7 @@ func (o *MockMockAPI) initHandlerCache() {
 
 	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
 
-	o.handlers["GET"]["/web"] = http.FileServer(http.Dir(p))
+	o.handlers["GET"]["/web"] = http.StripPrefix("/web/", http.FileServer(http.Dir(p)))
 
 }
 
