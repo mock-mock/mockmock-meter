@@ -301,5 +301,9 @@
 			"revisionTime": "2018-11-15T11:05:04Z"
 		}
 	],
-	"rootPath": "github.com/mockmock-meter"
+	"rootPath": "github.com/mockmock-meter",
+	"heroku": {
+        "install" : [ "./..." ],
+        "goVersion": "go1.12"
+         }
 }
