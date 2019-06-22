@@ -27,18 +27,6 @@
 			"revisionTime": "2019-04-23T14:49:23Z"
 		},
 		{
-			"checksumSHA1": "zdy6XflmESAiFmyptSqpUMfXSyo=",
-			"path": "github.com/globalsign/mgo/bson",
-			"revision": "eeefdecb41b842af6dc652aaea4026e8403e62df",
-			"revisionTime": "2018-10-15T13:59:52Z"
-		},
-		{
-			"checksumSHA1": "//bXQG4HblBwxHJDIW/PklXAxu0=",
-			"path": "github.com/globalsign/mgo/internal/json",
-			"revision": "eeefdecb41b842af6dc652aaea4026e8403e62df",
-			"revisionTime": "2018-10-15T13:59:52Z"
-		},
-		{
 			"checksumSHA1": "/XQGaC8NJzBKt/W/h9oLJbOTs2M=",
 			"path": "github.com/go-openapi/analysis",
 			"revision": "147e766af12c74c10c633436007317dbcd9abb0b",
@@ -183,38 +171,60 @@
 			"revisionTime": "2018-10-05T04:51:35Z"
 		},
 		{
-			"checksumSHA1": "0YVcYvHxlj9cbArrHCywlIf48Bc=",
+			"checksumSHA1": "QQN77mr3LQb6f2Qf0i9BdwIOb3M=",
+			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/cmd/mock-mock-server",
+			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
+			"revisionTime": "2019-06-22T16:18:10Z",
+			"version": "=develop-sandbox-oshitaku",
+			"versionExact": "develop-sandbox-oshitaku"
+		},
+		{
+			"checksumSHA1": "ICN1qQwY4F+a+tYqrML7r4oy3HU=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/models",
-			"revision": "1880bced5bd348ad07450ece11a9aad6b29de147",
-			"revisionTime": "2019-06-01T15:44:25Z"
+			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
+			"revisionTime": "2019-06-22T16:18:10Z",
+			"version": "=develop-sandbox-oshitaku",
+			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
-			"checksumSHA1": "rAWhuXKWVyDsFApBItRJ3ihe5OA=",
+			"checksumSHA1": "eLTsqEzCcXNAyZjuPIkcJmfQWRw=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi",
-			"revision": "1880bced5bd348ad07450ece11a9aad6b29de147",
-			"revisionTime": "2019-06-01T15:44:25Z"
+			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
+			"revisionTime": "2019-06-22T16:18:10Z",
+			"version": "=develop-sandbox-oshitaku",
+			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
-			"checksumSHA1": "SLFMie7Bn4KrcDxiHsVzcaPY+0A=",
+			"checksumSHA1": "SUbMBMeqvO38aMeZ+MkNBKUJ418=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations",
-			"revision": "1880bced5bd348ad07450ece11a9aad6b29de147",
-			"revisionTime": "2019-06-01T15:44:25Z"
+			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
+			"revisionTime": "2019-06-22T16:18:10Z",
+			"version": "=develop-sandbox-oshitaku",
+			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "D5dWj8rYVGxKQNjqrwKjpUVk0ZY=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health",
-			"revision": "1880bced5bd348ad07450ece11a9aad6b29de147",
-			"revisionTime": "2019-06-01T15:44:25Z"
+			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
+			"revisionTime": "2019-06-22T16:18:10Z",
+			"version": "=develop-sandbox-oshitaku",
+			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "6tL+YSM7WoTtQ0JT0S3AP4JioQM=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock",
-			"revision": "1880bced5bd348ad07450ece11a9aad6b29de147",
-			"revisionTime": "2019-06-01T15:44:25Z"
+			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
+			"revisionTime": "2019-06-22T16:18:10Z",
+			"version": "=develop-sandbox-oshitaku",
+			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
+			"checksumSHA1": "gpC8uz21aP5+HIpsDiCReKqpb7E=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/web",
-			"revision": ""
+			"revision": "bdded53055d8e4fbaa67c24523b11e26c3d78be4",
+			"revisionTime": "2019-06-22T16:18:10Z",
+			"version": "=develop-sandbox-oshitaku",
+			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "GqhvFydNzXnxRyznxGxM8/xwEv8=",
@@ -301,9 +311,5 @@
 			"revisionTime": "2018-11-15T11:05:04Z"
 		}
 	],
-	"rootPath": "github.com/mockmock-meter",
-	"heroku": {
-        "install" : [ "./..." ],
-        "goVersion": "go1.12"
-         }
+	"rootPath": "github.com/mock-mock/mockmock-meter"
 }
