@@ -11,6 +11,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 
 	errors "github.com/go-openapi/errors"
@@ -299,13 +300,19 @@ func (o *MockMockAPI) initHandlerCache() {
 	for _, f := range files {
 		fmt.Println(f.Name())
 	}
+
+	p, err := filepath.Abs("./static")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Abs:" + p)
 	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("/mockmock-meter/frontend/vuetify-material-dashboard-master/dist"))
 
 	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../frontend/vuetify-material-dashboard-master/dist"))
 
 	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
 
-	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("static"))
+	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("./static"))
 
 }
 
