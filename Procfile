@@ -1,1 +1,1 @@
-web: bin/api/gen/cmd/mock-mock-server
+web: bin/backend/api/gen/cmd/mock-mock-server
