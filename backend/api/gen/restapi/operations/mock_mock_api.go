@@ -301,7 +301,7 @@ func (o *MockMockAPI) initHandlerCache() {
 		fmt.Println(f.Name())
 	}
 
-	p, err := filepath.Abs("./static/index.html")
+	p, err := filepath.Abs(".")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -312,7 +312,7 @@ func (o *MockMockAPI) initHandlerCache() {
 
 	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
 
-	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("."))
+	o.handlers["GET"]["/web"] = http.FileServer(http.Dir(p))
 
 }
 
