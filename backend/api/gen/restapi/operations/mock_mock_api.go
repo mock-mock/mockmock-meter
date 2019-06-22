@@ -288,7 +288,7 @@ func (o *MockMockAPI) initHandlerCache() {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
 	//o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
-	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("/app/frontend/vuetify-material-dashboard-master/dist"))
+	o.handlers["GET"]["/web/..."] = http.FileServer(http.Dir("/app/frontend/vuetify-material-dashboard-master/dist"))
 
 }
 
