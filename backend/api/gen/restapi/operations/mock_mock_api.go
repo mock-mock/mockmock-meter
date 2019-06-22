@@ -290,11 +290,11 @@ func (o *MockMockAPI) initHandlerCache() {
 	}
 	//o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
 	log.Println(o.context.BasePath())
-	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("/mockmock-meter/frontend/vuetify-material-dashboard-master/dist"))
+	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("/mockmock-meter/frontend/vuetify-material-dashboard-master/dist"))
 
-	o.handlers["GET"]["/web1"] = http.FileServer(http.Dir("../../../../../frontend/vuetify-material-dashboard-master/dist"))
+	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../frontend/vuetify-material-dashboard-master/dist"))
 
-	o.handlers["GET"]["/web2"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
+	o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
 
 }
 
