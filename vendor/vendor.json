@@ -179,56 +179,56 @@
 		{
 			"checksumSHA1": "QQN77mr3LQb6f2Qf0i9BdwIOb3M=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/cmd/mock-mock-server",
-			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
-			"revisionTime": "2019-06-22T18:41:32Z",
+			"revision": "9a1061230015ff03841b25ab632f51094e654be5",
+			"revisionTime": "2019-06-22T18:51:49Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "ICN1qQwY4F+a+tYqrML7r4oy3HU=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/models",
-			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
-			"revisionTime": "2019-06-22T18:41:32Z",
+			"revision": "9a1061230015ff03841b25ab632f51094e654be5",
+			"revisionTime": "2019-06-22T18:51:49Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "eLTsqEzCcXNAyZjuPIkcJmfQWRw=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi",
-			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
-			"revisionTime": "2019-06-22T18:41:32Z",
+			"revision": "9a1061230015ff03841b25ab632f51094e654be5",
+			"revisionTime": "2019-06-22T18:51:49Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
-			"checksumSHA1": "3tSUOmWgFyRllSPCxfzva7ClvXQ=",
+			"checksumSHA1": "qA20Ern3sncmJ61rDtK+hiFIsl4=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations",
-			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
-			"revisionTime": "2019-06-22T18:41:32Z",
+			"revision": "9a1061230015ff03841b25ab632f51094e654be5",
+			"revisionTime": "2019-06-22T18:51:49Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "D5dWj8rYVGxKQNjqrwKjpUVk0ZY=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/health",
-			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
-			"revisionTime": "2019-06-22T18:41:32Z",
+			"revision": "9a1061230015ff03841b25ab632f51094e654be5",
+			"revisionTime": "2019-06-22T18:51:49Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "6tL+YSM7WoTtQ0JT0S3AP4JioQM=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/mock",
-			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
-			"revisionTime": "2019-06-22T18:41:32Z",
+			"revision": "9a1061230015ff03841b25ab632f51094e654be5",
+			"revisionTime": "2019-06-22T18:51:49Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
 		{
 			"checksumSHA1": "gpC8uz21aP5+HIpsDiCReKqpb7E=",
 			"path": "github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/web",
-			"revision": "ae6b6554160e9e0a8a878fc1595b648ac474460c",
-			"revisionTime": "2019-06-22T18:41:32Z",
+			"revision": "9a1061230015ff03841b25ab632f51094e654be5",
+			"revisionTime": "2019-06-22T18:51:49Z",
 			"version": "=develop-sandbox-oshitaku",
 			"versionExact": "develop-sandbox-oshitaku"
 		},
