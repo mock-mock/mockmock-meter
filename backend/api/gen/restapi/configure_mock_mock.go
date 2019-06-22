@@ -56,7 +56,8 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 
 	// web
 	api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebresourceParams) middleware.Responder {
-		return web.NewWebresourceOK().WithPayload(&models.Web{Message: "OK"})
+		//return web.NewWebresourceOK().WithPayload(&models.Web{Message: "OK"})
+		return http.FileServer(http.Dir("/app/frontend/vuetify-material-dashboard-master/dist")) )
 	})
 
 	api.ServerShutdown = func() {}
