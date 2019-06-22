@@ -91,8 +91,7 @@ type MockMockAPI struct {
 	// HealthHelloHandler sets the operation handler for the hello operation
 	HealthHelloHandler health.HelloHandler
 	// WebWebresourceHandler sets the operation handler for the webresource operation
-	//WebWebresourceHandler web.WebresourceHandler
-	WebWebresourceHandler http.Handler
+	WebWebresourceHandler web.WebresourceHandler
 
 	// ServeError is called when an error is received, there is a default handler
 	// but you can set your own with this
