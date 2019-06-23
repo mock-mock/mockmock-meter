@@ -16,7 +16,7 @@ import (
 // WebresourceOKCode is the HTTP code returned for type WebresourceOK
 const WebresourceOKCode int = 200
 
-/*WebresourceOK OK
+/*WebresourceOK success and returns some html text
 
 swagger:response webresourceOK
 */

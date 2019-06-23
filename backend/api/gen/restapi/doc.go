@@ -16,6 +16,7 @@ This is a mock-mock server. Manage mock-mocks for motivated people.
 
     Produces:
     - application/json
+    - text/html
 
 swagger:meta
 */

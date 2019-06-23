@@ -17,6 +17,9 @@ type Web struct {
 
 	// message
 	Message string `json:"message,omitempty"`
+
+	// test file
+	TestFile interface{} `json:"testFile,omitempty"`
 }
 
 // Validate validates this web

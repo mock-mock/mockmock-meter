@@ -7,11 +7,8 @@ package operations
 
 import (
 	"fmt"
-	"io/ioutil"
-	"log"
+	"io"
 	"net/http"
-	"os"
-	"path/filepath"
 	"strings"
 
 	errors "github.com/go-openapi/errors"
@@ -45,6 +42,9 @@ func NewMockMockAPI(spec *loads.Document) *MockMockAPI {
 		BearerAuthenticator: security.BearerAuth,
 		JSONConsumer:        runtime.JSONConsumer(),
 		JSONProducer:        runtime.JSONProducer(),
+		HTMLProducer: runtime.ProducerFunc(func(w io.Writer, data interface{}) error {
+			return errors.NotImplemented("html producer has not yet been implemented")
+		}),
 		MockPostMockHandler: mock.PostMockHandlerFunc(func(params mock.PostMockParams) middleware.Responder {
 			return middleware.NotImplemented("operation MockPostMock has not yet been implemented")
 		}),
@@ -87,6 +87,8 @@ type MockMockAPI struct {
 
 	// JSONProducer registers a producer for a "application/json" mime type
 	JSONProducer runtime.Producer
+	// HTMLProducer registers a producer for a "text/html" mime type
+	HTMLProducer runtime.Producer
 
 	// MockPostMockHandler sets the operation handler for the post mock operation
 	MockPostMockHandler mock.PostMockHandler
@@ -157,6 +159,10 @@ func (o *MockMockAPI) Validate() error {
 
 	if o.JSONProducer == nil {
 		unregistered = append(unregistered, "JSONProducer")
+	}
+
+	if o.HTMLProducer == nil {
+		unregistered = append(unregistered, "HTMLProducer")
 	}
 
 	if o.MockPostMockHandler == nil {
@@ -231,6 +237,9 @@ func (o *MockMockAPI) ProducersFor(mediaTypes []string) map[string]runtime.Produ
 		case "application/json":
 			result["application/json"] = o.JSONProducer
 
+		case "text/html":
+			result["text/html"] = o.HTMLProducer
+
 		}
 
 		if p, ok := o.customProducers[mt]; ok {
@@ -291,28 +300,7 @@ func (o *MockMockAPI) initHandlerCache() {
 	if o.handlers["GET"] == nil {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
-	//o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
-	log.Println(o.context.BasePath())
-	p, _ := os.Getwd()
-	fmt.Println(p)
-
-	files, _ := ioutil.ReadDir("./")
-	for _, f := range files {
-		fmt.Println(f.Name())
-	}
-
-	p, err := filepath.Abs(".")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Abs:" + p)
-	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("/mockmock-meter/frontend/vuetify-material-dashboard-master/dist"))
-
-	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../frontend/vuetify-material-dashboard-master/dist"))
-
-	//o.handlers["GET"]["/web"] = http.FileServer(http.Dir("../../../../../../frontend/vuetify-material-dashboard-master/dist"))
-
-	o.handlers["GET"]["/web"] = http.StripPrefix("/web", http.FileServer(http.Dir(p)))
+	o.handlers["GET"]["/web"] = web.NewWebresource(o.context, o.WebWebresourceHandler)
 
 }
 

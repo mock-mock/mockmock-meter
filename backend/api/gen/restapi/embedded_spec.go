@@ -21,6 +21,10 @@ func init() {
   "consumes": [
     "application/json"
   ],
+  "produces": [
+    "application/json",
+    "text/html"
+  ],
   "schemes": [
     "http"
   ],
@@ -103,6 +107,9 @@ func init() {
     "/web": {
       "get": {
         "description": "some",
+        "produces": [
+          "text/html"
+        ],
         "tags": [
           "web"
         ],
@@ -110,9 +117,12 @@ func init() {
         "operationId": "webresource",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "success and returns some html text",
             "schema": {
               "$ref": "#/definitions/Web"
+            },
+            "examples": {
+              "text/html": "\u003chtml\u003e\u003cbody\u003eYour HTML text\u003c/body\u003e\u003c/html\u003e"
             }
           }
         }
@@ -179,6 +189,9 @@ func init() {
       "properties": {
         "message": {
           "type": "string"
+        },
+        "testFile": {
+          "type": "object"
         }
       }
     }
@@ -194,6 +207,10 @@ func init() {
   "consumes": [
     "application/json"
   ],
+  "produces": [
+    "application/json",
+    "text/html"
+  ],
   "schemes": [
     "http"
   ],
@@ -276,6 +293,9 @@ func init() {
     "/web": {
       "get": {
         "description": "some",
+        "produces": [
+          "text/html"
+        ],
         "tags": [
           "web"
         ],
@@ -283,9 +303,12 @@ func init() {
         "operationId": "webresource",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "success and returns some html text",
             "schema": {
               "$ref": "#/definitions/Web"
+            },
+            "examples": {
+              "text/html": "\u003chtml\u003e\u003cbody\u003eYour HTML text\u003c/body\u003e\u003c/html\u003e"
             }
           }
         }
@@ -352,6 +375,9 @@ func init() {
       "properties": {
         "message": {
           "type": "string"
+        },
+        "testFile": {
+          "type": "object"
         }
       }
     }
