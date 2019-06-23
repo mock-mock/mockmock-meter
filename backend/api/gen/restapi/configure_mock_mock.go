@@ -5,6 +5,7 @@ package restapi
 import (
 	"crypto/tls"
 	"net/http"
+	"os"
 
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/web"
 
@@ -38,6 +39,8 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 
 	api.JSONProducer = runtime.JSONProducer()
 
+	api.HTMLProducer = runtime.TextProducer()
+
 	/*
 		Health
 	*/
@@ -57,7 +60,24 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 
 	// web
 	api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebresourceParams) middleware.Responder {
-		return web.NewWebresourceOK().WithPayload(&models.Web{TestFile: "<html><body>Your HTML text Hello World</body></html>"})
+		//return web.NewWebresourceOK().WithPayload(&models.Web{TestFile: "<html><body>Your HTML text Hello World</body></html>"})
+		web.NewWebresourceOK().SetPayload(&models.Web{TestFile: "<html><body>Your HTML text Hello World</body></html>"})
+		var fileBytes []byte
+		file, err := os.Open(`/static/index.html`)
+		if err != nil {
+			// Openエラー処理
+			panic(err)
+		}
+		defer file.Close()
+
+		fileBytes = make([]byte, 1024)
+
+		var rw http.ResponseWriter
+		rw.Header().Set("Content-Type", "text/html")
+		//rw.WriteHeader(200)
+		rw.Write(fileBytes) //(num int, err error)
+		web.NewWebresourceOK().WriteResponse(rw, api.HTMLProducer)
+		return web.NewWebresourceOK()
 	})
 
 	api.ServerShutdown = func() {}
