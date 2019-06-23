@@ -4,7 +4,9 @@ package main
 
 import (
 	"log"
+	"net/http"
 	"os"
+	"path/filepath"
 
 	loads "github.com/go-openapi/loads"
 	flags "github.com/jessevdk/go-flags"
@@ -16,6 +18,11 @@ import (
 // Make sure not to overwrite this file after you generated it because all your edits would be lost!
 
 func main() {
+	p, absErr := filepath.Abs("./static")
+	if absErr != nil {
+		log.Fatal(absErr)
+	}
+	http.Handle("/web2/", http.StripPrefix("/static/", http.FileServer(http.Dir(p))))
 
 	swaggerSpec, err := loads.Embedded(restapi.SwaggerJSON, restapi.FlatSwaggerJSON)
 	if err != nil {
