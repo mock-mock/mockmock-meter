@@ -7,7 +7,6 @@ package operations
 
 import (
 	"fmt"
-	"io"
 	"net/http"
 	"strings"
 
@@ -42,9 +41,10 @@ func NewMockMockAPI(spec *loads.Document) *MockMockAPI {
 		BearerAuthenticator: security.BearerAuth,
 		JSONConsumer:        runtime.JSONConsumer(),
 		JSONProducer:        runtime.JSONProducer(),
-		HTMLProducer: runtime.ProducerFunc(func(w io.Writer, data interface{}) error {
-			return errors.NotImplemented("html producer has not yet been implemented")
-		}),
+		HTMLProducer:        runtime.TextProducer(),
+		// HTMLProducer: runtime.ProducerFunc(func(w io.Writer, data interface{}) error {
+		// 	return errors.NotImplemented("html producer has not yet been implemented")
+		// }),
 		MockPostMockHandler: mock.PostMockHandlerFunc(func(params mock.PostMockParams) middleware.Responder {
 			return middleware.NotImplemented("operation MockPostMock has not yet been implemented")
 		}),
