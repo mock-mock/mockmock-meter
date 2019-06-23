@@ -4,8 +4,10 @@ package restapi
 
 import (
 	"crypto/tls"
+	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"github.com/mock-mock/mockmock-meter/backend/api/gen/restapi/operations/web"
 
@@ -62,8 +64,13 @@ func configureAPI(api *operations.MockMockAPI) http.Handler {
 	api.WebWebresourceHandler = web.WebresourceHandlerFunc(func(params web.WebresourceParams) middleware.Responder {
 		//return web.NewWebresourceOK().WithPayload(&models.Web{TestFile: "<html><body>Your HTML text Hello World</body></html>"})
 		web.NewWebresourceOK().SetPayload(&models.Web{TestFile: "<html><body>Your HTML text Hello World</body></html>"})
+		p, absErr := filepath.Abs("./static/index.html")
+		if absErr != nil {
+			log.Fatal(absErr)
+		}
+
 		var fileBytes []byte
-		file, err := os.Open(`/static/index.html`)
+		file, err := os.Open(p)
 		if err != nil {
 			// Openエラー処理
 			panic(err)
