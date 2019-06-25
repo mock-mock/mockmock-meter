@@ -10,6 +10,11 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+
+	// getusers "github.com/mock-mock/mockmock-meter/backend/web/dao/getusers"
+
+	// dao "github.com/mock-mock/mockmock-meter/backend/web/dao/getusers"
+	dao "github.com/mock-mock/mockmock-meter/backend/web/dao/getusers"
 )
 
 func main() {
@@ -29,6 +34,18 @@ func main() {
 
 	e.GET("/dashboard", func(c echo.Context) error {
 		return c.Redirect(http.StatusMovedPermanently, "https://mockmock-meter-proto.herokuapp.com")
+	})
+
+	e.GET("/v1", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, "Hello!")
+	})
+
+	e.GET("/v1/healthCheck", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, "OK!")
+	})
+
+	e.GET("/v1/users", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, dao.getUsers())
 	})
 
 	// サーバー起動
