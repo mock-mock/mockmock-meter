@@ -6,7 +6,7 @@ package main
 
 import (
 	"net/http"
-	"os"
+	//"os"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -14,7 +14,7 @@ import (
 	// getusers "github.com/mock-mock/mockmock-meter/backend/web/dao/getusers"
 
 	// dao "github.com/mock-mock/mockmock-meter/backend/web/dao/getusers"
-	dao "github.com/mock-mock/mockmock-meter/backend/web/dao/getusers"
+	dao "github.com/mock-mock/mockmock-meter/backend/web/dao"
 )
 
 func main() {
@@ -45,11 +45,17 @@ func main() {
 	})
 
 	e.GET("/v1/users", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, dao.getUsers())
+		data := dao.GetTest()
+		return c.JSON(http.StatusOK, data)
+	})
+
+	e.GET("/v1/DBusers", func(c echo.Context) error {
+		data := dao.GetFromDB()
+		return c.JSON(http.StatusOK, data)
 	})
 
 	// サーバー起動
 	//e.Start(":8080")
-	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
-	//e.Logger.Fatal(e.Start(":8080"))
+	//e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+	e.Logger.Fatal(e.Start(":8080"))
 }
