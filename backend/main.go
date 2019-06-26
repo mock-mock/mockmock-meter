@@ -56,14 +56,14 @@ func main() {
 	e.POST("/api/mock/start", func(c echo.Context) error {
 		// get request param
 		requestParam := utils.ParseRequest(c)
-		data := command.Start()
+		data := command.Start(requestParam)
 		return c.JSON(http.StatusOK, data)
 	})
 
 	e.POST("/api/mock/end", func(c echo.Context) error {
 		// get request param
 		requestParam := utils.ParseRequest(c)
-		data := command.End()
+		data := command.End(requestParam)
 		return c.JSON(http.StatusOK, data)
 	})
 

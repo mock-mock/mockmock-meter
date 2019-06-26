@@ -1,9 +1,7 @@
 package command
 
-import (
-	"fmt"
-)
+import "github.com/mockmock-meter/backend/domain"
 
-func End() string {
+func End(req domain.SlackRequest) string {
 	return "end"
 }

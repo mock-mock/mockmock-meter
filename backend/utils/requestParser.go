@@ -2,10 +2,11 @@ package utils
 
 import (
 	"github.com/labstack/echo"
-
-	slack "github.com/mock-mock/mockmock-meter/backend/domain"
+	"github.com/mockmock-meter/backend/domain"
 )
 
-func ParseRequest(c echo.Context) slack.SlackRequest {
-	return slack.SlackRequest
+func ParseRequest(c echo.Context) domain.SlackRequest {
+	return domain.SlackRequest{
+		ChannelID: "test_id",
+	}
 }
