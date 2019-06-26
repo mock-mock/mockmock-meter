@@ -10,6 +10,8 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	"github.com/mockmock-meter/backend/command"
+	"github.com/mockmock-meter/backend/utils"
 
 	dao "github.com/mock-mock/mockmock-meter/backend/dao"
 )
@@ -33,21 +35,40 @@ func main() {
 		return c.Redirect(http.StatusMovedPermanently, "https://mockmock-meter-proto.herokuapp.com")
 	})
 
-	e.GET("/v1", func(c echo.Context) error {
+	e.GET("/api", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, "Hello!")
 	})
 
-	e.GET("/v1/healthCheck", func(c echo.Context) error {
+	e.GET("/api/healthCheck", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, "OK!")
 	})
 
-	e.GET("/v1/users", func(c echo.Context) error {
+	e.GET("/api/users", func(c echo.Context) error {
 		data := dao.GetTest()
 		return c.JSON(http.StatusOK, data)
 	})
 
-	e.GET("/v1/DBusers", func(c echo.Context) error {
+	e.GET("/api/DBusers", func(c echo.Context) error {
 		data := dao.GetFromDB()
+		return c.JSON(http.StatusOK, data)
+	})
+
+	e.POST("/api/mock/start", func(c echo.Context) error {
+		// get request param
+		requestParam := utils.ParseRequest(c)
+		data := command.Start()
+		return c.JSON(http.StatusOK, data)
+	})
+
+	e.POST("/api/mock/end", func(c echo.Context) error {
+		// get request param
+		requestParam := utils.ParseRequest(c)
+		data := command.End()
+		return c.JSON(http.StatusOK, data)
+	})
+
+	e.GET("/api/mock/${term}", func(c echo.Context) error {
+		data := command.Get()
 		return c.JSON(http.StatusOK, data)
 	})
 
