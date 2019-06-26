@@ -3,12 +3,12 @@ package utils
 import "os"
 
 func GetDBInfo() string {
-	host := os.GetEnv("DB_HOST")
-	port := os.GetEnv("DB_PORT")
-	user := os.GetEnv("DB_USER")
-	dbname := os.GetEnv("DB_NAME")
-	pass := os.GetEnv("DB_PASS")
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	user := os.Getenv("DB_USER")
+	dbname := os.Getenv("DB_NAME")
+	pass := os.Getenv("DB_PASS")
 	sslmode := "require"
 
-	return "host=" + host + "port=" + port + "user=" + user + "dbname=" + dbname + "password=" + pass + "sslmode=" + sslmode
+	return "host=" + host + " port=" + port + " user=" + user + " dbname=" + dbname + " password=" + pass + " sslmode=" + sslmode
 }

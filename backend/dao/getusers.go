@@ -9,6 +9,8 @@ import (
 	"log"
 	"time"
 
+	"github.com/mock-mock/mockmock-meter/backend/utils"
+
 	_ "github.com/lib/pq"
 )
 
@@ -41,7 +43,7 @@ func GetFromDB() []User {
 }
 
 func getUserFromDB() []User {
-	db, err := gorm.Open("postgres", "db connect info")
+	db, err := gorm.Open("postgres", utils.GetDBInfo())
 	defer db.Close()
 	checkError(err)
 	var users []User

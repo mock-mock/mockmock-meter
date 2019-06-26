@@ -10,8 +10,8 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/mockmock-meter/backend/command"
-	"github.com/mockmock-meter/backend/utils"
+	"github.com/mock-mock/mockmock-meter/backend/command"
+	"github.com/mock-mock/mockmock-meter/backend/utils"
 
 	dao "github.com/mock-mock/mockmock-meter/backend/dao"
 )
