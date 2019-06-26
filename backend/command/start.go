@@ -1,9 +1,7 @@
 package command
 
-import (
-	"fmt"
-)
+import "github.com/mockmock-meter/backend/domain"
 
-func Start() string {
+func Start(req domain.SlackRequest) string {
 	return "start"
 }
