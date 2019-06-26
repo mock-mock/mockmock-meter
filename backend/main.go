@@ -6,10 +6,12 @@ package main
 
 import (
 	"net/http"
-	"os"
+	//"os"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+
+	dao "github.com/mock-mock/mockmock-meter/backend/dao"
 )
 
 func main() {
@@ -31,8 +33,26 @@ func main() {
 		return c.Redirect(http.StatusMovedPermanently, "https://mockmock-meter-proto.herokuapp.com")
 	})
 
+	e.GET("/v1", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, "Hello!")
+	})
+
+	e.GET("/v1/healthCheck", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, "OK!")
+	})
+
+	e.GET("/v1/users", func(c echo.Context) error {
+		data := dao.GetTest()
+		return c.JSON(http.StatusOK, data)
+	})
+
+	e.GET("/v1/DBusers", func(c echo.Context) error {
+		data := dao.GetFromDB()
+		return c.JSON(http.StatusOK, data)
+	})
+
 	// サーバー起動
 	//e.Start(":8080")
-	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
-	//e.Logger.Fatal(e.Start(":8080"))
+	//e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+	e.Logger.Fatal(e.Start(":8080"))
 }
