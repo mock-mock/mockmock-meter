@@ -2,7 +2,7 @@ package utils
 
 import (
 	"github.com/labstack/echo"
-	"github.com/mockmock-meter/backend/domain"
+	"github.com/mock-mock/mockmock-meter/backend/domain"
 )
 
 func ParseRequest(c echo.Context) domain.SlackRequest {
