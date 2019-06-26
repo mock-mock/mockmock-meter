@@ -11,10 +11,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 
-	// getusers "github.com/mock-mock/mockmock-meter/backend/web/dao/getusers"
-
-	// dao "github.com/mock-mock/mockmock-meter/backend/web/dao/getusers"
-	dao "github.com/mock-mock/mockmock-meter/backend/web/dao"
+	dao "github.com/mock-mock/mockmock-meter/backend/dao"
 )
 
 func main() {

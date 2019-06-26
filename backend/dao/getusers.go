@@ -41,7 +41,7 @@ func GetFromDB() []User {
 }
 
 func getUserFromDB() []User {
-	db, err := gorm.Open("postgres", "host=ec2-54-83-192-245.compute-1.amazonaws.com port=5432 user=ylfelorspxjanf dbname=dddjl8auc3430l password=24e198709dfb1113870f62c651d990eab3b3caa46044b50c55d278132b1f67e0 sslmode=require")
+	db, err := gorm.Open("postgres", "db connect info")
 	defer db.Close()
 	checkError(err)
 	var users []User
