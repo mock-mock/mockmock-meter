@@ -27,20 +27,26 @@
 			"revisionTime": "2019-06-03T04:28:36Z"
 		},
 		{
-			"checksumSHA1": "Hfek89MpuUUc0gOsx3FWmWybfa4=",
+			"checksumSHA1": "ynPXfBgVKquHSKkdFWk3oqSYf+g=",
 			"path": "github.com/labstack/echo",
-			"revision": "8fb7b5be270fc295a68a016bcd9c3adfbfa303f5",
-			"revisionTime": "2019-06-27T17:52:17Z"
+			"revision": "38772c686c76b501f94bd6cd5b77f5842e93b559",
+			"revisionTime": "2019-01-28T14:12:53Z",
+			"version": "v3",
+			"versionExact": "v3.3.10"
 		},
 		{
-			"checksumSHA1": "RC6kD/JXUPmbZSOrqDpnBv3u6kM=",
+			"checksumSHA1": "Rp/k+BJKpaeB9vyjEPFBW4LeFP8=",
 			"path": "github.com/labstack/echo/middleware",
-			"revision": "8fb7b5be270fc295a68a016bcd9c3adfbfa303f5",
-			"revisionTime": "2019-06-27T17:52:17Z"
+			"revision": "38772c686c76b501f94bd6cd5b77f5842e93b559",
+			"revisionTime": "2019-01-28T14:12:53Z",
+			"version": "v3",
+			"versionExact": "v3.3.10"
 		},
 		{
 			"path": "github.com/labstack/echo/v4",
-			"revision": "8fb7b5be270fc295a68a016bcd9c3adfbfa303f5"
+			"revision": "",
+			"version": "v3",
+			"versionExact": "v3.3.10"
 		},
 		{
 			"checksumSHA1": "pfEL7LCj3pOF6ko/iLRXRDvrSnU=",
