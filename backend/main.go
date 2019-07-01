@@ -6,7 +6,8 @@ package main
 
 import (
 	"net/http"
-	//"os"
+	"os"
+	"fmt"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -29,6 +30,20 @@ func main() {
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
 	//e.Static("/", "/app/frontend")
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
+	
+	//hostname取得テスト
+	//hostname: USER-no-MacBook-Air.local
+	name, err := os.Hostname()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("hostname:", name)
+
+	//currentDir取得テスト
+	//dir: /Users/user/go/src/github.com/mock-mock/mockmock-meter/backend
+	p, _ := os.Getwd()
+    fmt.Println("dir:", p)
+
 	e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
 
 	e.GET("/dashboard", func(c echo.Context) error {
