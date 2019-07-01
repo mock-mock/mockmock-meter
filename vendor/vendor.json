@@ -43,12 +43,6 @@
 			"versionExact": "v3.3.10"
 		},
 		{
-			"path": "github.com/labstack/echo/v4",
-			"revision": "",
-			"version": "v3",
-			"versionExact": "v3.3.10"
-		},
-		{
 			"checksumSHA1": "pfEL7LCj3pOF6ko/iLRXRDvrSnU=",
 			"path": "github.com/labstack/gommon/bytes",
 			"revision": "d700b06ce5f78800a08e16a7288a4cca389a6e83",
