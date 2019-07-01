@@ -95,6 +95,6 @@ func main() {
 
 	// サーバー起動
 	//e.Start(":8080")
-	//e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+	//e.Logger.Fatal(e.Start(":8080"))
 }
