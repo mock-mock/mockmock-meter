@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"fmt"
+	"strings"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -25,14 +26,13 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	// ルーティング
-	//e.Static("/", "../../frontend/mockmockproto/dist")
+	// ルーティングテスト
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
-	//e.Static("/", "/app/frontend")
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
 	
 	//hostname取得テスト
 	//hostname: USER-no-MacBook-Air.local
+	//hostname: 60ff3074-c971-434c-900c-c4c9dfb5b84b 
 	name, err := os.Hostname()
 	if err != nil {
 		panic(err)
@@ -41,10 +41,16 @@ func main() {
 
 	//currentDir取得テスト
 	//dir: /Users/user/go/src/github.com/mock-mock/mockmock-meter/backend
+	//dir: /app 
 	p, _ := os.Getwd()
     fmt.Println("dir:", p)
 
-	e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
+	if strings.Contains(name, "local") {
+		e.Static("/", "../frontend/vuetify-material-dashboard-master/dist")
+	} else {
+		e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
+	}
+	
 
 	e.GET("/dashboard", func(c echo.Context) error {
 		return c.Redirect(http.StatusMovedPermanently, "https://mockmock-meter-proto.herokuapp.com")
