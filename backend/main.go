@@ -44,7 +44,7 @@ func main() {
 	currentDir, _ := os.Getwd()
 	fmt.Println("dir:", currentDir)
 
-	if strings.Contains(name, "local") {
+	if strings.Contains(hostName, ".local") {
 		e.Static("/", "../frontend/vuetify-material-dashboard-master/dist")
 	} else {
 		e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
