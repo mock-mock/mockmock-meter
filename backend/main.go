@@ -5,9 +5,9 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
-	"fmt"
 	"strings"
 
 	"github.com/labstack/echo"
@@ -28,29 +28,27 @@ func main() {
 
 	// ルーティングテスト
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
-	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
-	
+
 	//hostname取得テスト
-	//hostname: USER-no-MacBook-Air.local
-	//hostname: 60ff3074-c971-434c-900c-c4c9dfb5b84b 
-	name, err := os.Hostname()
+	//local hostname: USER-no-MacBook-Air.local
+	//heroku hostname: 60ff3074-c971-434c-900c-c4c9dfb5b84b
+	hostName, err := os.Hostname()
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("hostname:", name)
+	fmt.Println("hostname:", hostName)
 
 	//currentDir取得テスト
-	//dir: /Users/user/go/src/github.com/mock-mock/mockmock-meter/backend
-	//dir: /app 
-	p, _ := os.Getwd()
-    fmt.Println("dir:", p)
+	//local dir: /Users/user/go/src/github.com/mock-mock/mockmock-meter/backend
+	//heroku dir: /app
+	currentDir, _ := os.Getwd()
+	fmt.Println("dir:", currentDir)
 
 	if strings.Contains(name, "local") {
 		e.Static("/", "../frontend/vuetify-material-dashboard-master/dist")
 	} else {
 		e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
 	}
-	
 
 	e.GET("/dashboard", func(c echo.Context) error {
 		return c.Redirect(http.StatusMovedPermanently, "https://mockmock-meter-proto.herokuapp.com")
@@ -94,7 +92,6 @@ func main() {
 	})
 
 	// サーバー起動
-	//e.Start(":8080")
 	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
 	//e.Logger.Fatal(e.Start(":8080"))
 }
