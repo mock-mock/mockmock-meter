@@ -5,8 +5,10 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
-	//"os"
+	"os"
+	"strings"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -24,12 +26,29 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	// ルーティング
-	//e.Static("/", "../../frontend/mockmockproto/dist")
+	// ルーティングテスト
 	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
-	//e.Static("/", "/app/frontend")
-	//e.Static("/", "../../frontend/vuetify-material-dashboard-master/dist")
-	e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
+
+	//hostname取得テスト
+	//local hostname: USER-no-MacBook-Air.local
+	//heroku hostname: 60ff3074-c971-434c-900c-c4c9dfb5b84b
+	hostName, err := os.Hostname()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("hostname:", hostName)
+
+	//currentDir取得テスト
+	//local dir: /Users/user/go/src/github.com/mock-mock/mockmock-meter/backend
+	//heroku dir: /app
+	currentDir, _ := os.Getwd()
+	fmt.Println("dir:", currentDir)
+
+	if strings.Contains(hostName, ".local") {
+		e.Static("/", "../frontend/vuetify-material-dashboard-master/dist")
+	} else {
+		e.Static("/", "/app/frontend/vuetify-material-dashboard-master/dist")
+	}
 
 	e.GET("/dashboard", func(c echo.Context) error {
 		return c.Redirect(http.StatusMovedPermanently, "https://mockmock-meter-proto.herokuapp.com")
@@ -73,7 +92,6 @@ func main() {
 	})
 
 	// サーバー起動
-	//e.Start(":8080")
-	//e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+	//e.Logger.Fatal(e.Start(":8080"))
 }
