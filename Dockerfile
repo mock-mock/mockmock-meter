@@ -9,15 +9,11 @@ ENV CGO_ENABLED 0
 WORKDIR /github.com/mock-mock/mockmock-meter
 COPY go.mod go.sum ./
 RUN go mod download
-
 COPY . .
 
-# ARG PATH="./main.go"
-# RUN pwd
-# RUN ls
-RUN go build -ldflags '-s -w' -a -installsuffix cgo -o /main ./backend/main.go
+ARG TARGETPATH="./backend/main.go"
+RUN go build -ldflags '-s -w' -a -installsuffix cgo -o /main ${TARGETPATH}
 # RUN ls -d $(find `pwd`)
-# ${PATH}
 
 # Runtime Stage
 FROM alpine:3.9.4
