@@ -7,14 +7,16 @@ ENV GOARCH amd64
 ENV CGO_ENABLED 0
 
 WORKDIR /github.com/mock-mock/mockmock-meter
+COPY go.mod go.sum ./
+RUN go mod download
+
 COPY . .
 
 # ARG PATH="./main.go"
-RUN pwd
-RUN ls
-RUN go mod download
+# RUN pwd
+# RUN ls
 RUN go build -ldflags '-s -w' -a -installsuffix cgo -o /main ./backend/main.go
-RUN ls -d $(find `pwd`)
+# RUN ls -d $(find `pwd`)
 # ${PATH}
 
 # Runtime Stage
