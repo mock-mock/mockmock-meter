@@ -1,7 +1,7 @@
 # Build Stage
 FROM golang:1.12.5 AS builder
 
-ENV O111MODULE on 
+ENV GO111MODULE on 
 ENV GOOS linux 
 ENV GOARCH amd64 
 ENV CGO_ENABLED 0
