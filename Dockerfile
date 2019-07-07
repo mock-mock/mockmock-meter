@@ -13,7 +13,6 @@ COPY . .
 
 ARG TARGETPATH="./backend/main.go"
 RUN go build -ldflags '-s -w' -a -installsuffix cgo -o /main ${TARGETPATH}
-# RUN ls -d $(find `pwd`)
 
 # Runtime Stage
 FROM alpine:3.9.4
