@@ -1,0 +1,10 @@
+{
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on"
+    },
+    "[go]": {
+        "editor.formatOnSave": true
+     },
+    "files.insertFinalNewline": true,
+    "go.formatTool": "gofmt"
+}
