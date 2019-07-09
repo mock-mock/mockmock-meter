@@ -11,7 +11,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/mock-mock/mockmock-meter/backend/command"
-	"github.com/mock-mock/mockmock-meter/backend/utils"
+	"github.com/mock-mock/mockmock-meter/backend/domain"
 
 	dao "github.com/mock-mock/mockmock-meter/backend/dao"
 )
@@ -55,15 +55,21 @@ func main() {
 
 	e.POST("/api/mock/start", func(c echo.Context) error {
 		// get request param
-		requestParam := utils.ParseRequest(c)
-		data := command.Start(requestParam)
+		req := new(domain.SlackRequest)
+		if err := c.Bind(req); err != nil {
+			return err
+		}
+		data := command.Start(*req)
 		return c.JSON(http.StatusOK, data)
 	})
 
 	e.POST("/api/mock/end", func(c echo.Context) error {
 		// get request param
-		requestParam := utils.ParseRequest(c)
-		data := command.End(requestParam)
+		req := new(domain.SlackRequest)
+		if err := c.Bind(req); err != nil {
+			return err
+		}
+		data := command.End(*req)
 		return c.JSON(http.StatusOK, data)
 	})
 
