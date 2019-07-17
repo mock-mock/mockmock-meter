@@ -3,41 +3,42 @@ package domain
 type SlackRequest struct {
 
 	// channel id
-	ChannelID string `json:"channel_id,omitempty"`
+	ChannelID string `form:"channel_id"`
 
 	// channel name
-	ChannelName string `json:"channel_name,omitempty"`
+	ChannelName string `form:"channel_name"`
 
 	// command
-	Command string `json:"command,omitempty"`
+	Command string `form:"command"`
 
 	// response url
-	ResponseURL string `json:"response_url,omitempty"`
+	ResponseURL string `form:"response_url"`
 
 	// team domain
-	TeamDomain string `json:"team_domain,omitempty"`
+	TeamDomain string `form:"team_domain"`
 
 	// team id
-	TeamID string `json:"team_id,omitempty"`
+	TeamID string `form:"team_id"`
 
 	// text
-	Text string `json:"text,omitempty"`
+	Text string `form:"text"`
 
 	// token
-	Token string `json:"token,omitempty"`
+	Token string `form:"token"`
 
 	// trigger id
-	TriggerID string `json:"trigger_id,omitempty"`
+	TriggerID string `form:"trigger_id"`
 
 	// user id
-	UserID string `json:"user_id,omitempty"`
+	UserID string `form:"user_id"`
 
 	// user name
-	UserName string `json:"user_name,omitempty"`
+	UserName string `form:"user_name"`
 }
 
+// SlackResponse is ResponseDto
 type SlackResponse struct {
 
-	// message
-	Message string `json:"message,omitempty"`
+	// message text
+	Text string `json:"text,omitempty"`
 }
