@@ -6,12 +6,13 @@ package main
 
 import (
 	"net/http"
-	//"os"
+	"os"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/mock-mock/mockmock-meter/backend/command"
 	"github.com/mock-mock/mockmock-meter/backend/domain"
+	"github.com/mock-mock/mockmock-meter/backend/utils"
 
 	dao "github.com/mock-mock/mockmock-meter/backend/dao"
 )
@@ -79,7 +80,9 @@ func main() {
 	})
 
 	// サーバー起動
-	//e.Start(":8080")
-	//e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
-	e.Logger.Fatal(e.Start(":8080"))
+	port := os.Getenv("PORT")
+	if utils.StringIsEmpty(port) {
+		port = "8080"
+	}
+	e.Logger.Fatal(e.Start(":" + port))
 }
