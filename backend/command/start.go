@@ -37,6 +37,14 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 		SlackId: req.UserID,
 	}
 	db.Where("slack_id = ?", req.UserID).Preload("Mockmocks", "end_date = '0001-01-01 00:00:00'").Find(&user)
+	log.Print(user)
+	// Userレコードが取れたかチェック
+	if user.ID == 0 {
+		// userレコードを作る
+		user.Name = req.UserName
+		db.Create(&user)
+	}
+
 	// もくもく中かチェック
 	if len(user.Mockmocks) != 0 {
 		res := domain.SlackResponse{
