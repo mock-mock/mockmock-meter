@@ -6,7 +6,7 @@ package main
 
 import (
 	"net/http"
-	//"os"
+	"os"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -67,7 +67,9 @@ func main() {
 	})
 
 	// サーバー起動
-	//e.Start(":8080")
-	//e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
-	e.Logger.Fatal(e.Start(":8080"))
+	port := os.Getenv("PORT")
+	if utils.StringIsEmpty(port) {
+		port = "8080"
+	}
+	e.Logger.Fatal(e.Start(":" + port))
 }

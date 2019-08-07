@@ -19,6 +19,6 @@ FROM alpine:3.9.4
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /main .
 
-CMD ./main --host 0.0.0.0 --port 8080
+CMD ./main --host 0.0.0.0 --port ${PORT}
 
-EXPOSE 8080
+EXPOSE ${PORT}
