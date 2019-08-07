@@ -93,7 +93,7 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 	log.Print("afterTime：", afterTime)
 
 	res := domain.SlackResponse{
-		Text:         "もくもく終了！タイムは" + strconv.FormatFloat(duration.Hours(), 'G', 4, 64) + "時間" + strconv.FormatFloat(duration.Minutes(), 'G', 4, 64) + "分でした。お疲れ様でした！",
+		Text:         "もくもく終了！タイムは" + strconv.FormatFloat(duration.Round(time.Hour).Hours(), 'G', 4, 64) + "時間" + strconv.FormatFloat(duration.Round(time.Minute).Minutes(), 'G', 4, 64) + "分でした。お疲れ様でした！",
 		Channel:      req.ChannelName,
 		ResponseType: "in_channel",
 	}
