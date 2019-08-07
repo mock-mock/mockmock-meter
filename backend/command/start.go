@@ -19,7 +19,11 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 
 	//コマンドが違ったらバグなので、リターンする
 	if !strings.Contains(req.Command, "start") {
-		res := domain.SlackResponse{Text: "BUG:command is not matched", Channel: req.ChannelName, ResponseType: "in_channel"}
+		res := domain.SlackResponse{
+			Text:         "BUG:command is not matched",
+			Channel:      req.ChannelName,
+			ResponseType: "in_channel",
+		}
 		return res
 	}
 
@@ -35,13 +39,21 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 	db.Where("slack_id = ?", req.UserID).Preload("Mockmocks", "end_date = '0001-01-01 00:00:00'").Find(&user)
 	// もくもく中かチェック
 	if len(user.Mockmocks) != 0 {
-		res := domain.SlackResponse{Text: "まだもくもく中です！新たにスタートするには、「/mock_end」してください。", Channel: req.ChannelName, ResponseType: "in_channel"}
+		res := domain.SlackResponse{
+			Text:         "まだもくもく中です！新たにスタートするには、「/mock_end」してください。",
+			Channel:      req.ChannelName,
+			ResponseType: "in_channel",
+		}
 		return res
 	}
 
 	// Insertする
 	insertMock(db, user.ID)
-	res := domain.SlackResponse{Text: "もくもくスタート！", Channel: req.ChannelName, ResponseType: "in_channel"}
+	res := domain.SlackResponse{
+		Text:         "もくもくスタート！",
+		Channel:      req.ChannelName,
+		ResponseType: "in_channel",
+	}
 	// 時間計測：終了
 	afterTime := time.Now()
 	log.Print("afterTime - beforeTime：", afterTime.Sub(beforeTime))
