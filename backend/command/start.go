@@ -13,10 +13,10 @@ import (
 )
 
 func Start(req domain.SlackRequest) domain.SlackResponse {
-	// memo: https://script.google.com/macros/s/AKfycbwBeiTRWprDV9RJWgH8AqHSgZh5QB-7EEgyYOMVoquDq-27GELg/exec
-	log.Print("get req")
+	// 時間計測：開始
 	beforeTime := time.Now()
 	log.Print("beforeTime：", beforeTime)
+
 	//コマンドが違ったらバグなので、リターンする
 	if !strings.Contains(req.Command, "start") {
 		res := domain.SlackResponse{Text: "BUG:command is not matched", Channel: req.ChannelName, ResponseType: "in_channel"}
@@ -26,18 +26,13 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 	// UserテーブルをPreloadして、MockMockレコードを持ってくる
 	db, err := gorm.Open("postgres", utils.GetDBInfo())
 	defer db.Close()
-	loggingPanic(err)
+	LoggingPanic(err)
 
+	// SlackIdからUserId取得＋現在のもくもくレコードを取得
 	user := domain.User{
 		SlackId: req.UserID,
 	}
-	// SlackIdからUserId取得＋現在のもくもくレコードを取得
-	bfQuery1 := time.Now()
-	log.Print("bfQuery1：", bfQuery1.Sub(beforeTime))
 	db.Where("slack_id = ?", req.UserID).Preload("Mockmocks", "end_date = '0001-01-01 00:00:00'").Find(&user)
-	log.Print(user)
-	afQuery1 := time.Now()
-	log.Print("afQuery1：", afQuery1.Sub(beforeTime))
 	// もくもく中かチェック
 	if len(user.Mockmocks) != 0 {
 		res := domain.SlackResponse{Text: "まだもくもく中です！新たにスタートするには、「/mock_end」してください。", Channel: req.ChannelName, ResponseType: "in_channel"}
@@ -45,28 +40,25 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 	}
 
 	// Insertする
-	bfQuery2 := time.Now()
-	log.Print("bfQuery2：", bfQuery2.Sub(beforeTime))
 	insertMock(db, user.ID)
-	afQuery2 := time.Now()
-	log.Print("afQuery2：", afQuery2.Sub(beforeTime))
 	res := domain.SlackResponse{Text: "もくもくスタート！", Channel: req.ChannelName, ResponseType: "in_channel"}
+	// 時間計測：終了
 	afterTime := time.Now()
-	log.Print("afterTime：", afterTime.Sub(beforeTime))
-	log.Print(afterTime)
+	log.Print("afterTime - beforeTime：", afterTime.Sub(beforeTime))
+	log.Print("afterTime：", afterTime)
 	return res
 }
 
-func insertMock(db *gorm.DB, userId int) {
+func insertMock(db *gorm.DB, userID int) {
 	mock := domain.Mockmock{
 		StartDate: time.Now(),
-		UserID:    userId,
+		UserID:    userID,
 		Category:  "もくもく",
 	}
 	db.Create(&mock)
 }
 
-func loggingPanic(err error) {
+func LoggingPanic(err error) {
 	if err != nil {
 		log.SetFlags(log.LstdFlags | log.Lmicroseconds | log.Lshortfile)
 		log.SetOutput(os.Stdout)
