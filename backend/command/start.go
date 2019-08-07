@@ -16,6 +16,7 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 	// memo: https://script.google.com/macros/s/AKfycbwBeiTRWprDV9RJWgH8AqHSgZh5QB-7EEgyYOMVoquDq-27GELg/exec
 	log.Print("get req")
 	beforeTime := time.Now()
+	log.Print(beforeTime)
 	//コマンドが違ったらバグなので、リターンする
 	if !strings.Contains(req.Command, "start") {
 		res := domain.SlackResponse{Text: "BUG:command is not matched", Channel: req.ChannelName, ResponseType: "in_channel"}
@@ -50,9 +51,9 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 	afQuery2 := time.Now()
 	log.Print("afQuery2", afQuery2.Sub(beforeTime))
 	res := domain.SlackResponse{Text: "もくもくスタート！", Channel: req.ChannelName, ResponseType: "in_channel"}
-	log.Print(res)
 	afterTime := time.Now()
 	log.Print("afterTime", afterTime.Sub(beforeTime))
+	log.Print(afterTime)
 	return res
 }
 
