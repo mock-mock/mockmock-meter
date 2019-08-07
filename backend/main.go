@@ -12,8 +12,6 @@ import (
 	"github.com/labstack/echo/middleware"
 	"github.com/mock-mock/mockmock-meter/backend/command"
 	"github.com/mock-mock/mockmock-meter/backend/domain"
-
-	dao "github.com/mock-mock/mockmock-meter/backend/dao"
 )
 
 func main() {
@@ -41,16 +39,6 @@ func main() {
 
 	e.GET("/api/healthCheck", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, "OK!")
-	})
-
-	e.GET("/api/users", func(c echo.Context) error {
-		data := dao.GetTest()
-		return c.JSON(http.StatusOK, data)
-	})
-
-	e.GET("/api/DBusers", func(c echo.Context) error {
-		data := dao.GetFromDB()
-		return c.JSON(http.StatusOK, data)
 	})
 
 	e.POST("/api/mock/start", func(c echo.Context) error {

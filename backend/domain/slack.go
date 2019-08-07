@@ -41,4 +41,10 @@ type SlackResponse struct {
 
 	// message text
 	Text string `json:"text,omitempty"`
+
+	// return Channel
+	Channel string `json:"channel,omitempty"`
+
+	// https://api.slack.com/slash-commands
+	ResponseType string `json:"response_type,omitempty"`
 }
