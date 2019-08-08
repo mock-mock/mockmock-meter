@@ -47,7 +47,11 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 
 	//コマンドが違ったらバグなので、リターンする
 	if !strings.Contains(req.Command, "end") {
-		res := domain.SlackResponse{Text: "BUG:command is not matched", Channel: req.ChannelName, ResponseType: "in_channel"}
+		res := domain.SlackResponse{
+			Text:         "BUG:command is not matched",
+			Channel:      req.ChannelName,
+			ResponseType: "in_channel",
+		}
 		return res
 	}
 
@@ -75,7 +79,8 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 		res := domain.SlackResponse{
 			Text:         "もくもく中のレコードが複数あります",
 			Channel:      req.ChannelName,
-			ResponseType: "in_channel"}
+			ResponseType: "in_channel",
+		}
 		return res
 	}
 
@@ -95,7 +100,8 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 	log.Print("afterTime：", afterTime)
 
 	res := domain.SlackResponse{
-		Text:         "もくもく終了！タイムは" + strconv.FormatFloat(hour, 'G', 4, 64) + "時間" + strconv.FormatFloat(min, 'G', 4, 64) + "分でした。お疲れ様でした！",
+		Text: "もくもく終了！タイムは" + strconv.FormatFloat(hour, 'G', 4, 64) +
+			"時間" + strconv.FormatFloat(min, 'G', 4, 64) + "分でした。お疲れ様でした！",
 		Channel:      req.ChannelName,
 		ResponseType: "in_channel",
 	}
