@@ -45,7 +45,7 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 	beforeTime := time.Now()
 	log.Print("beforeTime：", beforeTime)
 
-	//コマンドが違ったらバグなので、リターンする
+	// コマンドが違ったらバグなので、リターンする
 	if !strings.Contains(req.Command, "end") {
 		res := domain.SlackResponse{
 			Text:         "BUG:command is not matched",
@@ -60,12 +60,12 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 	defer db.Close()
 	LoggingPanic(err)
 
-	//update対象のUserIdを取得する。かつ、end_dateが埋まっていないもくもくレコードを探す。
+	// update対象のUserIdを取得する。かつ、end_dateが埋まっていないもくもくレコードを探す。
 	user := domain.User{
 		SlackId: req.UserID,
 	}
 	db.Where("slack_id = ?", req.UserID).Preload("Mockmocks", "end_date = '0001-01-01 00:00:00'").Find(&user)
-	//なければリターン。
+	// なければリターン。
 	if len(user.Mockmocks) == 0 {
 		res := domain.SlackResponse{
 			Text:         "開始していません！新たにスタートするには、「/mock_start」してください。",
@@ -75,9 +75,11 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 	} else if len(user.Mockmocks) > 1 {
 		UnexpectedMockmocksLengthErr := errors.New("もくもく中のレコードが複数あります：" +
 			strconv.Itoa(len(user.Mockmocks)))
-		LoggingPanic(UnexpectedMockmocksLengthErr)
+		// 下のResponseを返したいので、Panicを起こさずエラーログを残す。Papertrailで拾う。
+		// TODO：エラーだしユーザーはどうしようもないから、もくもくレコードを削除する仕様にしてもいいかも
+		log.Print("error: " + UnexpectedMockmocksLengthErr.Error())
 		res := domain.SlackResponse{
-			Text:         "もくもく中のレコードが複数あります",
+			Text:         "もくもく中のレコードが複数あります。Slack管理者へお伝えください。",
 			Channel:      req.ChannelName,
 			ResponseType: "in_channel",
 		}

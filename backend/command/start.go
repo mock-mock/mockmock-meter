@@ -82,7 +82,7 @@ func LoggingPanic(err error) {
 	if err != nil {
 		log.SetFlags(log.LstdFlags | log.Lmicroseconds | log.Lshortfile)
 		log.SetOutput(os.Stdout)
-		log.SetPrefix("[mockmock] Panic")
+		log.SetPrefix("[mockmock] Panic ")
 		log.Panic(err)
 	}
 	return
