@@ -44,7 +44,8 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 		res := domain.SlackResponse{
 			Text:         "開始していません！新たにスタートするには、「/mock_start」してください。",
 			Channel:      req.ChannelName,
-			ResponseType: "in_channel"}
+			ResponseType: "in_channel",
+		}
 		return res
 	} else if len(user.Mockmocks) > 1 {
 		UnexpectedMockmocksLengthErr := errors.New("もくもく中のレコードが複数あります：" +
