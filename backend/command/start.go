@@ -17,7 +17,7 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 	beforeTime := time.Now()
 	log.Print("beforeTime：", beforeTime)
 
-	//コマンドが違ったらバグなので、リターンする
+	//コマンドが違ったらバグ(設定ミス)なので、リターンする
 	if !strings.Contains(req.Command, "start") {
 		res := domain.SlackResponse{
 			Text:         "BUG:command is not matched",
@@ -27,20 +27,19 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 		return res
 	}
 
-	// UserテーブルをPreloadして、MockMockレコードを持ってくる
 	db, err := gorm.Open("postgres", utils.GetDBInfo())
 	defer db.Close()
 	LoggingPanic(err)
 
+	// UserテーブルをPreloadして、MockMockレコードを持ってくる
 	// SlackIdからUserId取得＋現在のもくもくレコードを取得
 	user := domain.User{
-		SlackId: req.UserID,
+		SlackID: req.UserID,
 	}
 	db.Where("slack_id = ?", req.UserID).Preload("Mockmocks", "end_date = '0001-01-01 00:00:00'").Find(&user)
 	log.Print(user)
-	// Userレコードが取れたかチェック
+	// Userレコードが取れなかったら、Userレコードを作る
 	if user.ID == 0 {
-		// userレコードを作る
 		user.Name = req.UserName
 		db.Create(&user)
 	}
@@ -57,15 +56,17 @@ func Start(req domain.SlackRequest) domain.SlackResponse {
 
 	// Insertする
 	insertMock(db, user.ID)
+
+	// 時間計測：終了
+	afterTime := time.Now()
+	log.Print("afterTime - beforeTime：", afterTime.Sub(beforeTime))
+	log.Print("afterTime：", afterTime)
+
 	res := domain.SlackResponse{
 		Text:         "もくもくスタート！",
 		Channel:      req.ChannelName,
 		ResponseType: "in_channel",
 	}
-	// 時間計測：終了
-	afterTime := time.Now()
-	log.Print("afterTime - beforeTime：", afterTime.Sub(beforeTime))
-	log.Print("afterTime：", afterTime)
 	return res
 }
 
