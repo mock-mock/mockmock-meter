@@ -67,8 +67,8 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 	// end_dateとstart_dateとの差を出してリターン。
 	startDate := user.Mockmocks[0].StartDate
 	duration := endDate.Sub(startDate)
-	hour := duration.Round(time.Hour).Hours()
-	min := duration.Round(time.Minute).Minutes() - (60 * hour)
+	hour := duration.Truncate(time.Hour).Hours()               // Truncateは切り捨て
+	min := duration.Round(time.Minute).Minutes() - (60 * hour) // Roundは四捨五入
 	log.Print("hour: ", strconv.FormatFloat(hour, 'G', 4, 64))
 	log.Print("min: ", strconv.FormatFloat(min, 'G', 4, 64))
 
