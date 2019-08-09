@@ -69,6 +69,8 @@ func End(req domain.SlackRequest) domain.SlackResponse {
 	duration := endDate.Sub(startDate)
 	hour := duration.Round(time.Hour).Hours()
 	min := duration.Round(time.Minute).Minutes() - (60 * hour)
+	log.Print("hour: ", strconv.FormatFloat(hour, 'G', 4, 64))
+	log.Print("min: ", strconv.FormatFloat(min, 'G', 4, 64))
 
 	// 時間計測：終了
 	afterTime := time.Now()
